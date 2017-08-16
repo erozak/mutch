@@ -7,7 +7,7 @@ import '../sass/main.scss';
 
 import store from './store';
 
-import Main from './components/Main';
+import Frame from './components/Frame';
 
 /*
 import TodoList from './components/TodoList';
@@ -15,7 +15,7 @@ import TodoList from './components/TodoList';
 
 ReactDOM.render(
   <Provider store={store}>
-    <Main />
+    <Frame />
   </Provider>,
   document.querySelector('#app'),
 );

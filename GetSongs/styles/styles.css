@@ -1,0 +1,223 @@
+@import url(font-awesome.css);
+@import url(loader.css);
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%; }
+
+body {
+  font-size: 16px; }
+
+body {
+  font-family: "Noto Sans", "WenQuanYi Micro Hei", "Noto Sans CJK TC", "Microsoft JhengHei", "Sans-serif", "Arial"; }
+
+*, *::before, *::after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit; }
+
+input, textarea, select, button {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit; }
+input:focus, textarea:focus, select:focus, button:focus {
+  outline: 0 none; }
+
+body {
+  color: #333; }
+
+.wrap {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%; }
+body > .wrap {
+  padding: 2vh 0;
+  height: auto;
+  min-height: 100%; }
+
+.flex {
+  display: flex;
+  align-items: stretch;
+  align-content: stretch; }
+
+.f-col {
+  flex-direction: column; }
+
+.f-tc {
+  align-items: stretch;
+  justify-content: flex-start;
+  align-content: flex-start; }
+
+.f-i-g {
+  flex-grow: 1; }
+
+.f-i-still {
+  flex-shrink: 0; }
+
+.cb::after {
+  content: " ";
+  display: block;
+  visibility: hidden;
+  height: 0;
+  clear: both; }
+
+.song, .inp, .btn {
+  transition: all 0.15s ease-in-out; }
+
+.inp, .btn {
+  padding: 0.5em 1.5em 0.475em; }
+
+.btn {
+  border: 1px solid transparent;
+  font-weight: bold;
+  cursor: pointer; }
+
+.btn-submit {
+  color: #FFF;
+  background-color: #0097e0; }
+.btn-submit:hover {
+  background-color: #14b2ff; }
+.btn-submit:active {
+  background-color: #0086c7; }
+
+.inp {
+  border: 1px solid transparent;
+  height: 2.575em;
+  min-width: 0;
+  font-size: 1em;
+  line-height: 1.6;
+  text-align: center;
+  user-select: all; }
+
+.lb {
+  display: inline-block; }
+.lb > .lb-txt {
+  display: block;
+  margin-bottom: 0.5em;
+  font-size: 0.75em;
+  font-weight: bold; }
+.lb > .inp {
+  border: 2px solid transparent;
+  border-bottom-color: #333;
+  width: 100%;
+  text-align: center; }
+.lb > .inp:focus {
+  border-color: #333;
+  background-color: rgba(0, 0, 0, 0.02);
+  box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.12) inset; }
+.lb:hover > .inp {
+  border-color: #333; }
+
+.loader-wrap {
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: #FFF;
+  z-index: 999; }
+
+.main {
+  margin: 0 auto;
+  width: 80%;
+  min-width: 350px;
+  transition: width 0.15s ease-in-out; }
+
+.top {
+  padding: 16px 1.5em 24px;
+  width: 100%;
+  background-color: #FFF; }
+.top > .lb, .top > .btn {
+  float: left;
+  margin-right: 1.5em; }
+.top > .lb:last-child, .top > .btn:last-child {
+  margin-right: 0; }
+
+.songs {
+  counter-reset: song;
+  padding: 1em; }
+
+.song {
+  display: block;
+  position: relative;
+  margin: 3em 0 0 1.5em;
+  text-decoration: none;
+  counter-increment: song; }
+.song::before {
+  content: "#" counter(song);
+  display: inline-block;
+  top: -1.25em;
+  left: -1.5em;
+  position: absolute;
+  padding: 0.25em 1em 0.225em;
+  line-height: 1.6;
+  color: #FFF;
+  background-color: #333;
+  transition: all 0.15s ease-in-out;
+  z-index: 50; }
+.song:hover::before {
+  box-shadow: 0 0 0.05em rgba(0, 0, 0, 0.32); }
+.song:hover > .wrap {
+  border-color: #333; }
+.song > .wrap {
+  border: 2px solid rgba(0,0,0,.12);
+  padding: 1em 1.5em;
+  background-color: #FFF;
+  transition: all 0.15s ease-in-out;
+  z-index: 45; }
+.song .authors {
+  line-height: 1.6;
+  margin-bottom: 0.25em; }
+.song .authors > .fa {
+  float: left;
+  display: inline-block;
+  margin-right: 0.5em;
+  width: 1em;
+  height: 1.6em; }
+.song .authors > .fa::before {
+  line-height: 1.6; }
+.song .authors > .auth {
+  float: left;
+  margin-right: 1.5em; }
+.song .title {
+  font-size: 1.5em;
+  font-weight: bold;
+  line-height: 1;
+  font-family: 'Noto Sans', 'Noto Sans CJK TC', 'Microsoft JhengHei', 'Sans-serif', 'Arial';
+  word-break: break-all; }
+.song .trans {
+  float: left;
+  margin-top: 0.5em;
+  margin-right: 1.5em; }
+.song .trans:last-child {
+  margin-right: 0; }
+
+@media screen and (max-width: 765px) {
+  .top {
+    flex-direction: column; }
+  .top > .lb, .top > .btn {
+    margin-right: 0;
+    margin-bottom: 1.5em; }
+  .top > .lb:last-child, .top > .btn:last-child {
+    margin-bottom: 0; } }
+@media screen and (max-width: 438px) {
+  .main {
+    width: 100%;
+    min-width: 0; }
+
+  .song {
+    margin: 0;
+    margin-top: 1.5em; }
+  .song::before {
+    top: 0.75em;
+    left: 0.75em; }
+  .song > .wrap {
+    padding-top: 3.3em; } }
