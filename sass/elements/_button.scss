@@ -1,0 +1,56 @@
+.btn {
+  border-radius: $button-border-radius;
+  padding: $button-padding;
+  cursor: pointer;
+  user-select: none;
+}
+
+.btn-bg {
+  @extend .btn;
+
+  padding: $button-bg-padding;
+}
+
+.btn-lg {
+  @extend .btn;
+
+  padding: $button-lg-padding;
+}
+
+.btn-lnk {
+  border-color: transparent;
+
+  &:hover {
+    text-decoration: underline;
+    text-decoration-skip: ink;
+  }
+
+}
+
+.btn-group {
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+
+  .btn {
+    border-right: 0 none;
+    border-left: 0 none;
+    border-radius: 0;
+
+    &:first-child {
+      border-left: $button-border-width solid $button-border-color;
+      border-radius: $button-border-radius 0 0 $button-border-radius;
+    }
+
+    &:last-child {
+      border-right: $button-border-width solid $button-border-color;
+      border-radius: 0 $button-border-radius $button-border-radius 0;
+    }
+
+    & + .btn {
+      border-left: $button-border-width solid $button-border-color;
+    }
+
+  }
+
+}

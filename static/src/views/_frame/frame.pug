@@ -1,0 +1,20 @@
+extends _html
+
+block head
+
+block body
+  #app.wrap
+    .bg-img(style="background-image:url('../../../assets/img/bg_img_0.jpg')")
+    .wrap-inner
+      header#header.head
+        .navbar
+          a.title-link(href="#")
+            h1.title= website_title
+          nav.nav
+            a.link(href="#") Analyse
+
+      main#main.main
+
+        block main
+
+block script

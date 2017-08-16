@@ -1,0 +1,146 @@
+.wrap {
+  position: relative;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 100%;
+  max-width: $wrap-limit;
+  min-height: 100%;
+  background-color: $bg-color;
+  z-index: 0;
+
+  .wrap-inner {
+    position: relative;
+    z-index: 5;
+  }
+
+}
+
+.container {
+  margin: 1em auto;
+  width: 100%;
+  max-width: 1440px * .96;
+}
+
+.box {
+  margin: $f2;
+  border: $box-border;
+  background-color: $box-bg-color;
+  box-shadow: $box-shadow;
+
+  .box-header,
+  .box-nav {
+    box-shadow: $box-border-shadow;
+  }
+
+  .box-header {
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+
+    .title {
+      flex-grow: 1;
+      margin: 0;
+    }
+
+  }
+
+  .box-tool {
+    flex-grow: 0;
+    flex-shrink: 0;
+    justify-content: center;
+    align-items: center;
+    margin: 0 1em;
+
+    .item {
+
+      .btn {
+        border-width: 0;
+        padding: $box-tool-item-padding;
+        color: $box-tool-item-color;
+        transition: all $transition-speed $transition-curze;
+
+        &:hover {
+          color: $box-tool-item-hover-color;
+          text-shadow: $box-tool-item-hover-shadow;
+        }
+
+        &:active {
+          color: $box-tool-item-actived-color;
+          transition: none;
+        }
+
+      }
+
+    }
+
+  }
+
+  .box-nav {}
+
+  .box-inner {}
+
+  .title {
+    margin-top: 0;
+    margin-bottom: 0;
+    border-bottom-width: 0;
+    text-shadow: $title-shadow;
+  }
+
+}
+
+.fluid {
+  width: 100% !important;
+}
+
+.popup-wrap {
+  top: 0;
+  left: 0;
+  position: absolute;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  width: 100%;
+  height: 100%;
+  background: rgba($black-real, .45);
+
+  .popup {
+    margin: #{$f2} auto;
+    border: $box-border;
+    border-radius: $card-border-radius;
+    width: 96%;
+    max-width: 1440px;
+    background-color: $bg-color;
+    box-shadow: $card-shadow;
+
+    .popup-header,
+    .popup-content {
+      padding: .75em;
+    }
+
+  }
+
+}
+
+.bg-img {
+  top: 0;
+  left: 0;
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: no-repeat center center fixed;
+  background-color: $bg-color;
+  background-size: cover;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  filter: saturate(150%) brightness(95%);
+  z-index: 1;
+}

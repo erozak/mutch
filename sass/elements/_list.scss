@@ -1,0 +1,81 @@
+.list {
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  list-style: none;
+
+  .list-item {
+    padding: $list-padding;
+
+    &:hover,
+    &:focus {
+      background-color: $item-hover-bg;
+    }
+
+  }
+
+}
+
+.list-hor {
+  @extend  .list;
+  flex-direction: row;
+}
+
+.list-group {
+  @extend .list;
+
+  .list-group-header {
+    @extend .list-item;
+
+    font-weight: bold;
+    font-size: 1.15em;
+  }
+
+  .list-group-inner {
+
+    & > .list {
+      margin: 0;
+      padding: $list-padding;
+    }
+
+  }
+
+}
+
+.list-obj {
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  padding: $obj-padding !important;
+
+  & > .obj-item {
+    flex-grow: 1;
+    margin-left: .5em;
+    margin-right: .5em;
+    padding: .5em;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+  }
+
+  .obj-btn,
+  .obj-drag {
+    align-self: flex-start;
+    flex-grow: 0 !important;
+    margin-top: $obj-btn-top;
+  }
+
+  .obj-drag {
+    width: 1.6em;
+    text-align: center;
+    user-select: none;
+  }
+}

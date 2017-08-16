@@ -1,0 +1,44 @@
+.navbar{
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  align-items: baseline;
+
+  .title-link {
+    display: inline-block;
+    margin: $head-title-gup;
+    color: inherit;
+    text-decoration: inherit;
+    text-shadow: $navbar-title-shadow;
+
+    .title {
+      margin: 0;
+      border-bottom-width: 0;
+    }
+
+  }
+
+}
+
+.nav {
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+
+  .navbar & {
+    font-size: 1.25em;
+
+    .link {
+
+      &:hover:not(.actived) {
+        text-shadow: $navbar-title-shadow;
+      }
+
+      &.actived {
+        box-shadow: $nav-link-actived-shadow;
+      }
+
+    }
+  }
+
+}

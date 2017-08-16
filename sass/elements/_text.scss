@@ -1,0 +1,11 @@
+.title {
+  border-bottom: $box-border;
+  padding: $title-padding;
+  line-height: 1.2;
+  font-family: $font-title-family;
+  letter-spacing: .03em;
+}
+
+.inner {
+  padding: .8em .75em;
+}
