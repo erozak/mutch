@@ -24,17 +24,25 @@
   display: -webkit-flex;
   display: -ms-flex;
   display: flex;
+  align-items: center;
 
   .navbar & {
     font-size: 1.25em;
 
     .link {
+      margin: $nav-gut;
+      padding: $nav-padding;
 
-      &:hover:not(.actived) {
-        text-shadow: $navbar-title-shadow;
+      span {
+        padding-bottom: .25em;
       }
 
-      &.actived {
+      &:hover:not(.actived) {
+        text-shadow: $nav-link-hover-shadow;
+      }
+
+      &.actived span {
+        font-weight: bold;
         box-shadow: $nav-link-actived-shadow;
       }
 

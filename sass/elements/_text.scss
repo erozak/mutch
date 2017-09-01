@@ -6,6 +6,65 @@
   letter-spacing: .03em;
 }
 
+.title-group {
+  @extend .title;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  align-items: baseline;
+  margin: 0;
+  padding: 0;
+
+  .title-addon {
+    margin: 0;
+    border-right: $box-border;
+    padding: $title-padding;
+  }
+
+  & > *:last-child {
+    border-right-width: 0;
+  }
+
+}
+
+.muted {
+  color: $font-muted-color;
+}
+
 .inner {
   padding: .8em .75em;
+}
+
+.group {
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  align-items: center;
+
+  .topic {
+    font-weight: bold;
+  }
+
+  .inner {
+    flex: 1 1 auto;
+    padding: $group-padding;
+  }
+
+}
+
+.tag {
+  display: inline-block;
+  margin: .25em .25em;
+  border: $tag-border;
+  border-radius: $tag-border-radius;
+  padding: $tag-padding;
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+
 }

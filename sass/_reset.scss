@@ -33,7 +33,7 @@ body {
 
 @for $i from 1 to 7 {
   h#{$i} {
-    margin: 1rem auto;
+    margin: 1rem .5em;
     line-height: 1;
   }
 }
@@ -310,6 +310,7 @@ input[type="submit"] {
   border-width: $button-border-width;
   border-style: solid;
   border-color: $button-border-color;
+  transition: all $transition-speed $transition-curze;
 
   &:hover {
     background-color: $button-hover-bg;

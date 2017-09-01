@@ -1,0 +1,25 @@
+.btn-correct,
+.btn-wrong {
+  background-clip: padding-box;
+}
+
+
+.btn-correct {
+
+  &:hover,
+  &.selected {
+    color: $white;
+    background-color: $green;
+  }
+
+}
+
+.btn-wrong {
+
+  &:hover,
+  &.selected {
+    color: $white;
+    background-color: $red;
+  }
+
+}

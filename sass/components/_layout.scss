@@ -1,10 +1,112 @@
-.head {
-  top: 0;
-  left: 0;
-  position: absolute;
-  width: 100%;
+.wrap {
+  height: 100%;
 }
 
-.main {
-  padding-top: 10rem;
+.frame {
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  align-content: stretch;
+  position: relative;
+  height: 100%;
+  width: 100%;
+
+  .frame-item {
+    position: relative;
+  }
+
+  .head,
+  .aside,
+  .content,
+  .foot {
+    border: 0 solid $frame-border-color;
+  }
+
+  .head,
+  .aside {
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+  }
+
+  .head {
+    order: 1;
+    border-bottom-width: 1px;
+
+    & > .title {
+      border-bottom-width: 0;
+      padding: $head-title-padding;
+      letter-spacing: .0625em;
+      line-height: 1;
+      font-weight: 900;
+
+      & .subtitle {
+        display: block;
+        margin-top: -3px;
+        font-size: .5em;
+        letter-spacing: 0.08em;
+        text-align: center;
+        font-weight: normal;
+      }
+
+    }
+
+  }
+
+  .main {
+    order: 2;
+    flex: 1;
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+
+    .aside {
+      flex-direction: column;
+      border-right-width: 1px;
+      padding: $aside-padding;
+      order: 1;
+
+      .title {
+        margin-top: 0;
+        margin-right: 0;
+        margin-left: 0;
+      }
+
+      .score {
+
+        .tag {
+          width: 100%;
+
+          .inner {
+            text-align: center;
+          }
+
+        }
+
+      }
+
+    }
+
+    .content {
+      order: 2;
+      flex: 1 1 80%;
+      background-color: $content-bg;
+      overflow: auto;
+    }
+
+  }
+
+  .foot {
+    order: 3;
+    border-top-width: 1px;
+    padding: $frame-padding;
+    text-align: center;
+
+    a {
+      color: inherit;
+    }
+  }
+
 }

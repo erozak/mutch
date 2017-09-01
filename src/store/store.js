@@ -4,6 +4,7 @@ import {
 } from 'redux';
 import { createLogger } from 'redux-logger';
 import Immutable from 'immutable';
+import thunk from 'redux-thunk';
 
 import reducers from '../reducers';
 
@@ -17,5 +18,5 @@ const logger = createLogger({
 export default createStore(
   reducers,
   initialState,
-  applyMiddleware(logger),
+  applyMiddleware(logger, thunk),
 );

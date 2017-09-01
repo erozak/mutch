@@ -1,11 +1,17 @@
 import React from 'react';
 
+import Popup from '../Popup';
+import Head from '../Head';
+import Main from '../Main';
+import Foot from '../Foot';
+
+
 const Frame = () => (
-  <div className="wrap-inner">
-    <div id="header" className="head">Head</div>
-    <div id="aside" className="aside">aside</div>
-    <div id="main" className="main">Main</div>
-    <div id="footer" className="foot">foot</div>
+  <div className="frame">
+    <Popup />
+    <Head />
+    <Main />
+    <Foot />
   </div>
 );
 

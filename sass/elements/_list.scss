@@ -21,6 +21,61 @@
 .list-hor {
   @extend  .list;
   flex-direction: row;
+  margin: $list-hor-gut;
+
+  & .topic:first-child,
+  & .item:first-child {
+    margin-left: 0;
+  }
+
+  & .topic:last-child,
+  & .item:last-child {
+    margin-right: 0;
+  }
+
+  & > .topic {
+    margin: .125em 1.25em;
+    font-weight: bold;
+  }
+
+  & > .item {
+    margin: .125em .25em;
+  }
+
+}
+
+.list-inline {
+  @extend .list;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+
+  .item {
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    flex-wrap: wrap;
+
+    .topic,
+    .inner {
+      padding: $list-padding;
+    }
+
+    .topic {
+      text-align: right;
+      flex: 0 0 25%;
+      font-weight: bold;
+    }
+
+    .inner {
+      flex: 1 1 70%;
+      margin: 0;
+    }
+
+  }
+
 }
 
 .list-group {
@@ -42,6 +97,10 @@
 
   }
 
+}
+
+.list-pain {
+  @extend .list;
 }
 
 .list-obj {
