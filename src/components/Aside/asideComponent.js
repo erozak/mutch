@@ -11,13 +11,13 @@ const Aside = ({
     <div className="score flex-fluid">
       <div className="group">
         <div className="topic">
-          <i className="fa fa-circle-o">Correct</i>
+          <i className="fa fa-circle-o"></i>
         </div>
         <div className="inner">{correct}</div>
       </div>
       <div className="group">
         <div className="topic">
-          <i className="fa fa-times">Wrong</i>
+          <i className="fa fa-times"></i>
         </div>
         <div className="inner">{wrong}</div>
       </div>

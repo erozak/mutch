@@ -25,7 +25,7 @@ const QuestionItem = ({
         <div className="box-inner">{artistsString}</div>
       </div>
       <button className="box-btn" onClick={onPopup(index)}>
-        <i className="fa fa-external-link-square"></i>
+        <i className="fa fa-external-link-square">Popup</i>
       </button>
     </li>
   );
@@ -33,9 +33,9 @@ const QuestionItem = ({
 
 QuestionItem.propTypes = {
   index: PropTypes.number.isRequired,
-  result: PropTypes.boolean.isRequired,
+  result: PropTypes.bool.isRequired,
   title: PropTypes.string.isRequired,
-  artists: PropTypes.array.isRequired,
+  artists: PropTypes.object.isRequired,
   onPopup: PropTypes.func.isRequired,
 };
 

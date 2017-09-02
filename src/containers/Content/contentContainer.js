@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import content from '../../components/Content';
+import Content from '../../components/Content';
 
 const mapStateToProps = state => ({
   genre: state.getIn(['data', 'pickedGenre']),
@@ -10,4 +10,4 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-)(content);
+)(Content);

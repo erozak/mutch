@@ -26,6 +26,6 @@ export const uiState = Immutable.fromJS({
   excel: '',
   genres: [],
   pickedExcel: '',
-  pickedQuestion: 0,
+  pickedQuestion: -1,
   popupShow: false,
 });

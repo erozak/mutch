@@ -4,15 +4,15 @@ import {
   Route,
 } from 'react-router-dom';
 
-import Content from '../Content';
-import Aside from '../Aside';
+import Aside from '../../containers/Aside';
+import Content from '../../containers/Content';
+import Init from '../../containers/Init';
 
 const Main = () => (
   <Router>
     <div className="main frame-item">
       <Aside />
-      <Route exact path="/" component={Content} />
-      <Content />
+      <Route exact path="/" component={Init} />
     </div>
   </Router>
 );

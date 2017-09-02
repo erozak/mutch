@@ -4,10 +4,10 @@ import genre from './Genre';
 import question from './Question';
 
 import {
-  uiState,
+  dataState,
 } from '../../models/state';
 
 export default handleActions({
   ...genre,
   ...question,
-}, uiState);
+}, dataState);

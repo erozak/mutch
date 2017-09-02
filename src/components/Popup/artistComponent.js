@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 const Artist = ({
   artist,
 }) => {
-  const topicClass = (artist.length > 1) ? 'topic list-pull-8' : 'topic';
-  const topicTitle = (artist.length > 1) ? 'Artists' : 'Artist';
-  const items = ((artist.length > 1)
-    ? artist[0] : artist.map(val => (
+  const topicClass = (artist.size > 1) ? 'topic list-pull-8' : 'topic';
+  const topicTitle = (artist.size > 1) ? 'Artists' : 'Artist';
+  const items = ((artist.size > 1)
+    ? artist.get(0) : artist.map(val => (
       <div className="tag">{val}</div>
     ))
   );
@@ -21,7 +21,7 @@ const Artist = ({
 };
 
 Artist.propTypes = {
-  artist: PropTypes.array.isRequired,
+  artist: PropTypes.object.isRequired,
 };
 
 export default Artist;

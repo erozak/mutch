@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import {
   onMutchRestart,
 } from '../../actions';
-import aside from '../../components/Aside';
+import Aside from '../../components/Aside';
 
 const mapStateToProps = state => ({
   correct: state.getIn(['data', 'score', 'correct']),
@@ -17,4 +17,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(aside);
+)(Aside);

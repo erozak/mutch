@@ -6,7 +6,7 @@ import {
 import Head from '../../components/Head';
 
 const mapStateToProps = state => ({
-  genres: state.getIn(['data', 'genres']),
+  genres: state.getIn(['ui', 'genres']),
 });
 
 const mapDispatchToProps = dispatch => ({

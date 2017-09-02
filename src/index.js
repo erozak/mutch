@@ -6,15 +6,14 @@ import { Provider } from 'react-redux';
 
 import '../sass/main.scss';
 
-// import store from './store';
+import store from './store';
 
-import Frame from './components/Frame';
+import Frame from './containers/Frame';
 
-/*
-import TodoList from './components/TodoList';
-*/
 
 ReactDOM.render(
-  <Frame />,
+  <Provider store={store}>
+    <Frame />
+  </Provider>,
   document.querySelector('#app'),
 );

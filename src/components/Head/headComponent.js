@@ -20,7 +20,7 @@ const Head = ({
 );
 
 Head.propTypes = {
-  genres: PropTypes.array.isRequired,
+  genres: PropTypes.object.isRequired,
   onGenreChange: PropTypes.func.isRequired,
 };
 

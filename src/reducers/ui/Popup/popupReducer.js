@@ -12,6 +12,6 @@ export default {
   [POPUP_CLOSE]: state => (
     state
       .set('popupShow', false)
-      .set('pickedQuestion', '')
+      .set('pickedQuestion', -1)
   ),
 };

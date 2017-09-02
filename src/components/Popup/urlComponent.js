@@ -13,11 +13,11 @@ const Url = ({
       <div className="inner">
         <div className="btn-group">{ spotify && spotify.length > 0 &&
           (<a className="btn-bg" target="_blank" href={`https://open.spotify.com/track/${spotify}`}>
-            <i className="fa fa-spotify">Spotify</i>
+            <i className="fa fa-spotify"></i>
           </a>)
         } { youtube && youtube.length > 0 &&
           (<a className="btn-bg" target="_blank" href={`https://youtu.be/${youtube}`}>
-            <i className="fa fa-youtube">Youtube</i>
+            <i className="fa fa-youtube"></i>
           </a>)
         }
         </div>

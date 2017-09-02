@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const Init = ({
   onExcelIdChange,
-  onInit,
+  onMutchInit,
 }) => (
   <div className="content">
     <div className="container">
@@ -16,7 +16,7 @@ const Init = ({
             <label htmlFor="excel-id" className="lb">Excel ID</label>
             <input type="text" id="excel-id" onChange={onExcelIdChange} />
           </div>
-          <button className="btn" type="button" onClick={onInit}>Get Datas</button>
+          <button className="btn" type="button" onClick={onMutchInit}>Get Datas</button>
         </div>
       </div>
     </div>
@@ -25,7 +25,7 @@ const Init = ({
 
 Init.propTypes = {
   onExcelIdChange: PropTypes.func.isRequired,
-  onInit: PropTypes.func.isRequired,
+  onMutchInit: PropTypes.func.isRequired,
 };
 
 export default Init;

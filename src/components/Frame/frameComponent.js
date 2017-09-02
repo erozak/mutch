@@ -1,18 +1,26 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-import Popup from '../Popup';
-import Head from '../Head';
+import Popup from '../../containers/Popup';
+import Head from '../../containers/Head';
 import Main from '../Main';
 import Foot from '../Foot';
 
-
-const Frame = () => (
+const Frame = ({
+  pickedQuestion,
+}) => (
   <div className="frame">
-    <Popup />
+    {
+      pickedQuestion >= 0 ? (<Popup />) : ''
+    }
     <Head />
     <Main />
     <Foot />
   </div>
 );
+
+Frame.propTypes = {
+  pickedQuestion: PropTypes.number.isRequired,
+};
 
 export default Frame;

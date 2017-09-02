@@ -3,20 +3,25 @@ import {
   applyMiddleware,
 } from 'redux';
 import { createLogger } from 'redux-logger';
-import Immutable from 'immutable';
 import thunk from 'redux-thunk';
+import { Map } from 'immutable';
 
 import reducers from '../reducers';
 
-const initialState = Immutable.Map();
+const initialState = Map();
+
 const logger = createLogger({
   collapsed: () => true,
   diff: true,
   stateTransformer: state => state.toJS(),
 });
 
-export default createStore(
+const store = createStore(
   reducers,
   initialState,
   applyMiddleware(logger, thunk),
 );
+
+export default store;
+
+console.log(store.getState().toJS());

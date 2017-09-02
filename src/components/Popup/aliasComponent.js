@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 const Alias = ({
   alias,
 }) => {
-  const topicClass = (alias.length > 1) ? 'topic list-pull-8' : 'topic';
-  const items = ((alias.length > 1)
-    ? alias[0] : alias.map(val => (
+  const topicClass = (alias.size > 1) ? 'topic list-pull-8' : 'topic';
+  const items = ((alias.size > 1)
+    ? alias.get(0) : alias.map(val => (
       <div className="tag">{val}</div>
     ))
   );
