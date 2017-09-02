@@ -1,6 +1,5 @@
 import { handleActions } from 'redux-actions';
 
-import mutch from './Mutch';
 import popup from './Popup';
 
 import {
@@ -8,6 +7,5 @@ import {
 } from '../../models/state';
 
 export default handleActions({
-  ...mutch,
   ...popup,
 }, uiState);

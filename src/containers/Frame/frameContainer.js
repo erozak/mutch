@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Frame from '../../components/Frame';
 
 const mapStateToProps = state => ({
-  pickedQuestion: state.getIn(['ui', 'pickedQuestion']),
+  popup: state.getIn(['ui', 'popup', 'show']),
 });
 
 export default connect(

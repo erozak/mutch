@@ -91,7 +91,11 @@
 
     .content {
       order: 2;
+      display: -webkit-flex;
+      display: -ms-flex;
+      display: flex;
       flex: 1 1 80%;
+      padding: 1em .5em;
       background-color: $content-bg;
       overflow: auto;
     }

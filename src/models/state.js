@@ -1,6 +1,9 @@
 import Immutable from 'immutable';
 
 export const dataState = Immutable.fromJS({
+  amount: 10,
+  excel: '',
+  genres: [],
   score: {
     correct: 0,
     wrong: 0,
@@ -22,10 +25,8 @@ export const dataState = Immutable.fromJS({
 });
 
 export const uiState = Immutable.fromJS({
-  amount: 10,
-  excel: '',
-  genres: [],
-  pickedExcel: '',
-  pickedQuestion: -1,
-  popupShow: false,
+  popup: {
+    show: false,
+    question: -1,
+  },
 });

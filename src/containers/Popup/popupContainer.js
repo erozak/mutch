@@ -8,7 +8,7 @@ import {
 import Popup from '../../components/Popup';
 
 const mapStateToProps = (state) => {
-  const id = state.getIn(['ui', 'pickedQuestion']);
+  const id = state.getIn(['ui', 'popup', 'question']);
   const question = state.getIn(['data', 'questions', id]) || fromJS({
     title: '',
     artist: [],

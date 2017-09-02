@@ -1,4 +1,4 @@
 export * from './genreAction';
-export * from './mutchAction';
+export * from './Mutch';
 export * from './popupAction';
 export * from './questionAction';

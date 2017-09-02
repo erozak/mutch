@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
-  <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
-    <title>EMVC - Mutch</title>
-    <link rel="stylesheet" href="styles/styles.css"/>
-  </head>
-  <body>
-    <div id="load" class="loader-wrap">
-      <div class="loader">Loading...</div>
-    </div>
-    <div class="wrap">
-      <div class="main flex f-col f-tc">
-        <div id="form" class="top f-i-still cb flex">
-          <label for="inp-category" class="lb f-i-still">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <title>EMVC - Mutch</title>
+  <link rel="stylesheet" href="styles/styles.css" />
+</head>
+
+<body>
+  <div id="load" class="loader-wrap">
+    <div class="loader">Loading...</div>
+  </div>
+  <div class="wrap">
+    <div class="main flex f-col f-tc">
+      <div id="form" class="top f-i-still cb flex">
+        <label for="inp-category" class="lb f-i-still">
             <div class="lb-txt">歌曲類別</div>
             <select id="inp-category" name="category" class="inp">
               <option value="0">中文流行</option>
@@ -24,79 +26,67 @@
               <option value="5">日文歌曲</option>
             </select>
           </label>
-          <label for="inp-amount" class="lb f-i-g">
+        <label for="inp-amount" class="lb f-i-g">
             <div class="lb-txt">歌曲數量</div>
             <input id="inp-amount" type="number" name="amount" min="1" value="10" class="inp"/>
           </label>
-          <button type="button" onclick="getSongs()" class="btn btn-submit">隨機抓取</button>
-        </div>
-        <div id="result" class="songs f-i-g"><a href="www.google.com" target="_blank" title="#1 SSSS - SSSSS" class="song">
-            <div class="wrap cb">
-              <div class="authors cb">
-                <div class="fa fa-youtube-play"></div>
-                <div class="auth">XXXXXX</div>
-                <div class="auth">XXXXXX</div>
-              </div>
-              <div class="title">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXxxxxxx</div>
-              <div class="trans">XXXXXXXXXXXXXXXXXX</div>
-              <div class="trans">XXXXXXXXXXXXXXXXXX</div>
-            </div></a></div>
+        <button type="button" onclick="getSongs()" class="btn btn-submit">隨機抓取</button>
+      </div>
+      <div id="result" class="songs f-i-g">
+        <a href="www.google.com" target="_blank" title="#1 SSSS - SSSSS" class="song">
+          <div class="wrap cb">
+            <div class="authors cb">
+              <div class="fa fa-youtube-play"></div>
+              <div class="auth">XXXXXX</div>
+              <div class="auth">XXXXXX</div>
+            </div>
+            <div class="title">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXxxxxxx</div>
+            <div class="trans">XXXXXXXXXXXXXXXXXX</div>
+            <div class="trans">XXXXXXXXXXXXXXXXXX</div>
+          </div>
+        </a>
       </div>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script>
-      (function() {
-        $( document ).ready( init );
-        function init() {
-          $( '#result' ).empty();
-          $( '#load' ).fadeOut( 150 );
-        }
-      })( $ );
-      function getSongs() {
-          $( '#load' ).fadeIn( 150 );
-          var uri = 'https://script.google.com/macros/s/AKfycbx6qsnSpw7ETpOGCgBtZEPkjJm52n1t3jFAucVY8PLT3byl_-2y/exec';
-          $.ajax({
-              crossDomain: true,
-              url: uri,
-              method: 'GET',
-              data: {
-                  amount: document.getElementById('inp-amount').value,
-                  category: document.getElementById('inp-category').value,
-                  callback: 'ajaxGet'
-              },
-              dataType: 'jsonp'
-          });
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script>
+    (function() {
+      $(document).ready(init);
+
+      function init() {
+        $('#result').empty();
+        $('#load').fadeOut(150);
       }
-      function ajaxGet(data) {
-          if (data) {
-          	console.log(data);
-              $('#result').empty();
-              data.forEach(function(el, i) {
-                  var song = $( document.createElement('a') );
-                  song
-                    .addClass('song')
-                    .attr({
-                      href: ( el.url ) ? el.url : 'javascript: void(0);',
-                      target: '_blank',
-                      title: '#' + i + ' ' + el.author + ' - ' + el.title[0]
-                    });
-                  var auth = '';
-                  console.log( el.author );
-                  el.author = el.author.split( /\s*(?:ft\.|feat\.|&|,|\+|\sX\s|\sx\s)\s*/g );
-                  console.log( el.author );
-                  el.author.forEach( ( j ) => auth += '<div class="auth">' + j + '</div>' );
-                  auth = '<div class="authors cb"><div class="fa fa-' + el.stream + '"></div>' + auth + '</div>';
-                  var title = '<div class="title">' + el.title[0] + '</div>';
-                  var trans = '';
-                  if ( el.title.length > 1 )
-                     for( let j = 1; j < el.title.length; j++ ) trans += '<div class="trans">' + el.title[ j ] + '</div>';
-                  var wrap = '<div class="wrap cb">' + auth + title + trans + '</div>';
-                  song.html( wrap );
-                  $('#result').append( song );
-              });
-          } else $('#resul').ihtml( data.toString() );
-          $( '#load' ).fadeOut( 150 );
-      }
-    </script>
-  </body>
+    })($);
+
+    function getSongs() {
+      $('#load').fadeIn(150);
+      var uri = 'https://script.google.com/macros/s/AKfycbx6qsnSpw7ETpOGCgBtZEPkjJm52n1t3jFAucVY8PLT3byl_-2y/exec';
+      $.ajax({
+        crossDomain: true,
+        url: uri,
+        method: 'GET',
+        data: {
+          excel: '1Izf1MmDHMLcULwUztQ8EuTTOTvTgl3Y1LcamjRh7mLY',
+          action: 'getInitData',
+          callback: 'ajaxSuc'
+        },
+        dataType: 'jsonp',
+        success: ajaxSuc
+      });
+    }
+
+    function c(data) {
+      console.log(data);
+      console.log('!!')
+      $('#load').fadeOut(150);
+    }
+
+    function ajaxSuc({ data }) {
+      console.log(data);
+      $('#load').fadeOut(150);
+    }
+  </script>
+</body>
+
 </html>

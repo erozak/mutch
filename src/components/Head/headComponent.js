@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import Shortid from 'shortid';
 
 const Head = ({
   genres,
@@ -13,7 +14,13 @@ const Head = ({
     </h1>
     <nav className="nav">{
       genres.map(val => (
-        <Link className="link" onCLick={onGenreChange(val)}>{val}</Link>
+        <Link
+          key={Shortid.generate()}
+          className="link"
+          onCLick={ () => onGenreChange(val)}
+        >{
+          val
+        }</Link>
       )).toJS()
     }</nav>
   </div>

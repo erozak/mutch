@@ -23,5 +23,3 @@ const store = createStore(
 );
 
 export default store;
-
-console.log(store.getState().toJS());

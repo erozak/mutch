@@ -3,8 +3,10 @@ import {
 } from '../../../models/actionTypes';
 
 export default {
-  [QUESTION_ANSWER]: (state, {
-    index,
-    answer,
-  }) => state.setIn(['question', index], answer),
+  [QUESTION_ANSWER]: (state, { payload }) => (
+    state.setIn(
+      ['question', payload.index],
+      payload.answer,
+    )
+  ),
 };

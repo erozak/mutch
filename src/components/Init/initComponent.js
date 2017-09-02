@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Init = ({
-  onExcelIdChange,
+  onMutchExcelChange,
   onMutchInit,
 }) => (
   <div className="content">
@@ -11,10 +11,18 @@ const Init = ({
         <div className="box-header">
           <h3 className="title">Init Settings</h3>
         </div>
-        <div className="box-inner">
-          <div className="input-group">
-            <label htmlFor="excel-id" className="lb">Excel ID</label>
-            <input type="text" id="excel-id" onChange={onExcelIdChange} />
+        <div className="inner">
+          <div className="form-group inline">
+            <label htmlFor="excel-id" className="lb">
+              <span className="text">Excel ID</span>
+              <input
+                type="text"
+                id="excel-id"
+                className="inp"
+                onChange={onMutchExcelChange}
+                placeholder="https://docs.google.com/spreadsheets/d/{ Your Excel ID }/edit"
+              />
+            </label>
           </div>
           <button className="btn" type="button" onClick={onMutchInit}>Get Datas</button>
         </div>
@@ -24,7 +32,7 @@ const Init = ({
 );
 
 Init.propTypes = {
-  onExcelIdChange: PropTypes.func.isRequired,
+  onMutchExcelChange: PropTypes.func.isRequired,
   onMutchInit: PropTypes.func.isRequired,
 };
 

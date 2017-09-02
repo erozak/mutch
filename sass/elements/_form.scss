@@ -69,6 +69,7 @@
 
     .text {
       display: inline-block;
+      flex-shrink: 0;
       margin-right: .5em;
       margin-bottom: 0;
       padding: $input-padding;

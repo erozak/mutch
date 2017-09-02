@@ -1,6 +1,7 @@
 import { handleActions } from 'redux-actions';
 
 import genre from './Genre';
+import mutch from './Mutch';
 import question from './Question';
 
 import {
@@ -9,5 +10,6 @@ import {
 
 export default handleActions({
   ...genre,
+  ...mutch,
   ...question,
 }, dataState);

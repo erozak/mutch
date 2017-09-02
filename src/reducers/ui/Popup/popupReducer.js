@@ -4,14 +4,14 @@ import {
 } from '../../../models/actionTypes';
 
 export default {
-  [POPUP_OPEN]: (state, question) => (
+  [POPUP_OPEN]: (state, { payload }) => (
     state
-      .set('popupShow', true)
-      .set('pickedQuestion', question)
+      .setIn(['popup', 'show'], true)
+      .setIn(['popup', 'question'], payload.question)
   ),
   [POPUP_CLOSE]: state => (
     state
-      .set('popupShow', false)
-      .set('pickedQuestion', -1)
+      .setIn(['popup', 'show'], false)
+      .setIn(['popup', 'question'], -1)
   ),
 };

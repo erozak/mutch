@@ -7,11 +7,11 @@ import Main from '../Main';
 import Foot from '../Foot';
 
 const Frame = ({
-  pickedQuestion,
+  popup,
 }) => (
   <div className="frame">
     {
-      pickedQuestion >= 0 ? (<Popup />) : ''
+      popup ? (<Popup />) : ''
     }
     <Head />
     <Main />
@@ -20,7 +20,7 @@ const Frame = ({
 );
 
 Frame.propTypes = {
-  pickedQuestion: PropTypes.number.isRequired,
+  popup: PropTypes.bool.isRequired,
 };
 
 export default Frame;

@@ -256,6 +256,25 @@ input[type="week"] {
   padding: $input-padding;
 }
 
+input[type="date"],
+input[type="datetime-local"],
+input[type="email"],
+input[type="month"],
+input[type="number"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="text"],
+input[type="time"],
+input[type="url"],
+input[type="week"] {
+  background-color: $input-blur-bg-color;
+
+  &:focus {
+    background-color: $input-focus-bg-color;
+  }
+}
+
 input[type="color"] {
   margin: 0;
   padding: $input-color-padding;
