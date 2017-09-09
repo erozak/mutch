@@ -6,8 +6,14 @@ import {
 import Aside from '../../components/Aside';
 
 const mapStateToProps = state => ({
-  correct: state.getIn(['data', 'score', 'correct']),
-  wrong: state.getIn(['data', 'score', 'wrong']),
+  correct: state
+            .getIn(['data', 'questions'])
+            .filter(val => val.get('result'))
+            .size,
+  wrong: state
+            .getIn(['data', 'questions'])
+            .filter(val => val.get('result') !== undefined && !val.get('result'))
+            .size,
 });
 
 const mapDispatchToProps = dispatch => ({

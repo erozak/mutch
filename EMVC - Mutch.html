@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<!-- saved from url=(0047)http://wisdom.nutc.edu.tw/~1410232042/GetSongs/ -->
+<html lang="zh-TW"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>EMVC - Mutch</title>
+    <link rel="stylesheet" href="./EMVC - Mutch_files/styles.css">
+  <style id="style-1-cropbar-clipper">/* Copyright 2014 Evernote Corporation. All rights reserved. */
+.en-markup-crop-options {
+    top: 18px !important;
+    left: 50% !important;
+    margin-left: -100px !important;
+    width: 200px !important;
+    border: 2px rgba(255,255,255,.38) solid !important;
+    border-radius: 4px !important;
+}
+
+.en-markup-crop-options div div:first-of-type {
+    margin-left: 0px !important;
+}
+</style></head>
+  <body style="" algoad="[&quot;fjeahcfaibacboijpccppebdpihhbflk&quot;]">
+    <div id="load" class="loader-wrap" style="display: none;">
+      <div class="loader">Loading...</div>
+    </div>
+    <div id="score" style="display:none;" class="score flex f-mc">
+      <div class="box flex f-col">
+        <button type="button" onclick="link(this)" class="btn btn-reload"><i class="fa fa-undo"></i>重新播放</button>
+        <div class="box info">
+          <div class="song single">
+            <div class="wrap cb">
+              <div class="authors cb">
+                <div class="auth">XXXXXX</div>
+                <div class="auth">XXXXXX</div>
+              </div>
+              <div class="title">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXxxxxxx</div>
+              <div class="trans">XXXXXXXXXXXXXXXXXX</div>
+              <div class="trans">XXXXXXXXXXXXXXXXXX</div>
+            </div>
+          </div>
+        </div>
+        <div class="flex f-sb">
+          <button type="button" onclick="score(true)" class="btn btn-successed"><i class="fa fa-circle-o"></i></button>
+          <button type="button" onclick="score(false)" class="btn btn-failed"><i class="fa fa-times"></i></button>
+        </div>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="main flex f-col f-tc">
+        <h1 class="title">MUTCH</h1>
+        <div id="form" class="top f-i-still cb flex">
+          <label for="inp-category" class="lb f-i-g">
+            <div class="lb-txt">歌曲類別</div>
+            <select id="inp-category" name="category" class="inp">
+              <option value="1">中文流行</option>
+              <option value="2">電子音樂</option>
+              <option value="3">西洋流行</option>
+              <option value="4">嘻哈音樂</option>
+              <option value="5">日韓音樂</option>
+              <option value="lord">魔王關卡</option>
+            </select>
+          </label>
+          <button type="button" onclick="getSongs()" class="btn btn-submit">隨機抓取</button>
+        </div>
+        <div id="result" data-score="0" data-done="0" class="songs f-i-g"></div>
+        <button type="button" onclick="toTop(500)" class="btn btn-submit toTop fa fa-arrow-up"></button>
+      </div>
+    </div>
+    <script src="./EMVC - Mutch_files/jquery.min.js.download"></script>
+    <script>
+      function getSongs() {
+          $( '#load' ).fadeIn( 150 );
+          var uri = 'https://script.google.com/macros/s/AKfycbwmgj0qEJJChhbPsxFlqkS8F2HfAgIftIiDGf9_2OmIWLC5olU/exec';
+          $.ajax({
+              crossDomain: true,
+              url: uri,
+              method: 'GET',
+              data: {
+                  category: document.getElementById('inp-category').value,
+                  callback: 'ajaxGet'
+              },
+              dataType: 'jsonp'
+          });
+      }
+      function ajaxGet(data) {
+          if (data) {
+          	console.log(data);
+              $('#result').empty().attr({ 'data-score': 0, 'data-done': 0 }).removeClass( 'success failed' );
+              $('#result:not(.actived)').addClass('actived');
+              data.forEach(function(el, i) {
+                  var song = $( document.createElement('a') );
+                  song
+                    .addClass( 'song ' + el.stream )
+                    .attr({
+                      href: ( el.url ) ? el.url : 'javascript: void(0);',
+                      target: '_blank',
+                      title: '#' + (i + 1) + ' ' + el.author + ' - ' + el.title[0],
+                      'data-index': i + 1
+                    })
+                    .bind( 'click.score', scorePop );
+                  var auth = '';
+                  el.author = el.author.split( /\s*(?:ft\.|feat\.|&|,|\+|\sX\s|\sx\s)\s*/g );
+                  el.author.forEach( ( j ) => auth += '<div class="auth">' + j + '</div>' );
+                  auth = '<div class="authors cb"><div class="fa fa-' + el.stream + '"></div>' + auth + '</div>';
+                  var title = '<div class="title">' + el.title[0] + '</div>';
+                  var trans = '';
+                  if ( el.title.length > 1 )
+                     for( let j = 1; j < el.title.length; j++ ) trans += '<div class="trans">' + el.title[ j ] + '</div>';
+                  var wrap = '<div class="wrap cb">' + auth + title + trans + '</div>';
+                  song.html( wrap );
+                  $('#result').append( song );
+              });
+          } else $('#resul').ihtml( data.toString() );
+          $( '#load' ).fadeOut( 150 );
+      }
+      function scorePop( e ) {
+         e.preventDefault();
+         var el = $( e.currentTarget );
+         if ( !$( el ).is( '.times-circle' ) && !$( el ).is( '.done' ) ) {
+             $( '#score' )
+                 .data({
+                     target: el.data( 'index' ),
+                     href: el.attr( 'href' )
+                 })
+                 .find( '.info' )
+                     .empty()
+                     .append(
+                         $( document.createElement('div') )
+                             .addClass( 'song single' )
+                             .html( $( el ).html() )
+                     );
+             $( '#score .btn-reload' ).removeAttr( 'disabled' ).data ( 'times', 0 );
+             $( 'body' ).css( 'overflow', 'hidden' );
+             $( '#score' ).fadeIn( 150 );
+             setTimeout( function() {
+                 var win = window.open( el.attr( 'href' ), '_blank' );
+                 win.focus();
+             }, 200);
+         }
+      }
+      function score(result) {
+          var t = $( '.song[data-index="' + $('#score').data( 'target' ) + '"]' );
+          var sc = $( '#result' ).attr( 'data-score' );
+          var dn = $( '#result' ).attr( 'data-done' );
+          sc = ( sc || sc == 0 ) ? parseInt( sc ) : 1;
+          dn = ( dn || dn == 0 ) ? parseInt( dn ) + 1 : 1;
+          t.addClass( 'done' );
+          if ( result ) {
+              $( '#result' ).attr( 'data-score', ++sc );
+              t.addClass( 'success' );
+          } else t.addClass( 'failed' );
+          $( '#result' ).attr( 'data-done', dn );
+          if ( $( '#inp-category' ).val() == 'lord' ) {
+              console.log( sc + '/' + dn + ' : ' + (dn - sc >= 3).toString() );
+              if ( dn - sc >= 3 ) $( '#result:not(.failed)' ).addClass( 'failed' );
+              else if ( sc >= 3 ) $( '#result:not(.success)' ).addClass( 'success' );
+          } else {
+              if ( dn - sc > 3 ) $( '#result:not(.failed)' ).addClass( 'failed' );
+              else if ( sc >= 7 ) $( '#result:not(.success)' ).addClass( 'success' );
+          }
+          $('#score').fadeOut( 150 );
+          $( 'body' ).css( 'overflow', 'auto' );
+      }
+      function link(el) {
+          console.log(el);
+          var t = $( el ).data( 'times' );
+          t = ( t || t === 0 ) ? parseInt( t ) + 1 : 1;
+          var win = window.open( $('#score').data( 'href' ), '_blank' );
+          win.focus();
+          if ( $( '#inp-category' ).val() == 'lord' && t >= 1 ) $( el ).attr( 'disabled', '' );
+          else if ( t >= 3 ) $( el ).attr( 'disabled', '' );
+      }
+      function toTop( d ) {
+          $('body').animate({scrollTop:0}, d );
+      }
+      (function() {
+        $( document ).ready( init );
+        function init() {
+          $( '#result' ).empty();
+          $( '#load' ).delay( 1000 ).fadeOut( 150 );
+        }
+      })( $ );
+    </script>
+  
+<span id="sbmarwbthv5"></span><iframe frameborder="0" scrolling="no" style="background-color: transparent; border: 0px; display: none;" src="./EMVC - Mutch_files/saved_resource.html"></iframe><div id="GOOGLE_INPUT_CHEXT_FLAG" style="display: none;" input="" input_stat="{&quot;tlang&quot;:true,&quot;tsbc&quot;:true,&quot;pun&quot;:false,&quot;mk&quot;:true,&quot;ss&quot;:false}"></div></body><style type="text/css" id="stylebot-global-css">@font-face {
+  
+  font-family: Arial;
+  src: local( "Noto Sans CJK TC DemiLight" ),
+    local( "E:/1_Element/Font/Chinesese/wqy-microhei.ttc" );
+}@font-face {
+  
+  font-family: "Malgun Gothic";
+  src: local( "Noto Sans CJK TC DemiLight" ),
+    local( "E:/1_Element/Font/Chinesese/wqy-microhei.ttc" );
+}@font-face {
+  
+  font-family: "sans-serif";
+  src: local( "Noto Sans CJK TC DemiLight" ),
+    local( "E:/1_Element/Font/Chinesese/wqy-microhei.ttc" );
+}@font-face {
+  
+  font-family: PMingLiU;
+  src: local( "Noto Sans CJK TC DemiLight" ),
+    local( "E:/1_Element/Font/Chinesese/wqy-microhei.ttc" );
+}@font-face {
+  
+  font-family: 新細明體;
+  src: local( "Noto Sans CJK TC DemiLight" ),
+    local( "E:/1_Element/Font/Chinesese/wqy-microhei.ttc" );
+}</style></html>

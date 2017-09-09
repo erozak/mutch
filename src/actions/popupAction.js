@@ -5,5 +5,5 @@ import {
   POPUP_CLOSE,
 } from '../models/actionTypes';
 
-export const onPopupOpen = createAction(POPUP_OPEN);
+export const onPopupOpen = createAction(POPUP_OPEN, index => ({ question: index }));
 export const onPopupClose = createAction(POPUP_CLOSE);

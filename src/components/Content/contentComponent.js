@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ShortId from 'shortid';
 
-import QuestionItem from '../QuestionItem';
+import QuestionItem from '../../containers/QuestionItem';
 
 const Content = ({
   genre,
@@ -29,9 +29,9 @@ const Content = ({
           <QuestionItem
             key={ShortId.generate()}
             index={index}
-            result={val.result}
-            title={val.title}
-            artists={val.artists}
+            result={val.get('result')}
+            title={val.get('title')}
+            artists={val.get('artists')}
           />
         )).toJS()
       }</ul>
@@ -42,7 +42,7 @@ const Content = ({
 Content.propTypes = {
   genre: PropTypes.string.isRequired,
   amount: PropTypes.number.isRequired,
-  questions: PropTypes.array.isRequired,
+  questions: PropTypes.object.isRequired,
 };
 
 export default Content;

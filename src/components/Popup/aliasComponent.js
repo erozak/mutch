@@ -1,14 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ShortId from 'shortid';
 
 const Alias = ({
   alias,
 }) => {
   const topicClass = (alias.size > 1) ? 'topic list-pull-8' : 'topic';
   const items = ((alias.size > 1)
-    ? alias.get(0) : alias.map(val => (
-      <div className="tag">{val}</div>
+    ? alias.map(val => (
+      <div key={ShortId.generate()} className="tag">{val}</div>
     ))
+    : alias.get(0)
   );
 
   return (

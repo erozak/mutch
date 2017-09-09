@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 const Url = ({
   url,
 }) => {
-  const spotify = url.spotify;
-  const youtube = url.youtube;
+  const spotify = url.get('spotify');
+  const youtube = url.get('youtube');
 
   return (
     <li className="item">

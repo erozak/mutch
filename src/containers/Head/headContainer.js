@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import {
-  onGenreChange,
+  onGenrePicked,
 } from '../../actions';
 import Head from '../../components/Head';
 
@@ -10,7 +10,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onGenreChange: genre => dispatch(onGenreChange(genre)),
+  onGenrePicked: genre => (
+    () => dispatch(onGenrePicked(genre))
+  ),
 });
 
 export default connect(

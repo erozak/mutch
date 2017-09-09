@@ -1,11 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Shortid from 'shortid';
 
 const Head = ({
   genres,
-  onGenreChange,
+  onGenrePicked,
 }) => (
   <div className="head frame-item navbar">
     <h1 className="title">
@@ -14,13 +13,14 @@ const Head = ({
     </h1>
     <nav className="nav">{
       genres.map(val => (
-        <Link
+        <button
           key={Shortid.generate()}
-          className="link"
-          onCLick={ () => onGenreChange(val)}
+          type="button"
+          className="btn link"
+          onClick={onGenrePicked(val.get('name'))}
         >{
-          val
-        }</Link>
+          val.get('name')
+        }</button>
       )).toJS()
     }</nav>
   </div>
@@ -28,7 +28,7 @@ const Head = ({
 
 Head.propTypes = {
   genres: PropTypes.object.isRequired,
-  onGenreChange: PropTypes.func.isRequired,
+  onGenrePicked: PropTypes.func.isRequired,
 };
 
 export default Head;

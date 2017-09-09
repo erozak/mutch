@@ -22,8 +22,8 @@ const mapStateToProps = (state) => {
   return {
     index: id,
     title: question.get('title'),
-    artist: question.get('artist'),
-    url: question.get('url'),
+    artist: question.get('artists'),
+    url: question.get('link'),
     alias: question.get('alias'),
   };
 };
@@ -31,10 +31,16 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => ({
   onPopupClose: () => dispatch(onPopupClose()),
   onQuestionAnswerCorrect: index => (
-    () => dispatch(onQuestionAnswer(index, true))
+    () => {
+      dispatch(onQuestionAnswer(index, true));
+      dispatch(onPopupClose());
+    }
   ),
   onQuestionAnswerWrong: index => (
-    () => dispatch(onQuestionAnswer(index, false))
+    () => {
+      dispatch(onQuestionAnswer(index, false));
+      dispatch(onPopupClose());
+    }
   ),
 });
 

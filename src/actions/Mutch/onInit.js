@@ -3,7 +3,7 @@ import 'whatwg-fetch';
 import { fromJS } from 'immutable';
 // import { stringify } from 'qs';
 
-import { onGenreInit } from '../genreAction';
+import { onGenreInit } from '../Genre';
 
 const onMutchInit = excel => (
   (dispatch) => {

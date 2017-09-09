@@ -6,7 +6,12 @@ import {
 
 export default {
   [GENRE_CHANGE]: (state, { payload }) => (
-    state.set('pickedGenre', payload.genre)
+    state
+      .set(
+        'pickedGenre',
+        payload.genre,
+      )
+      .set('questions', payload.questions)
   ),
 
   [GENRE_INIT]: (state, { payload }) => (

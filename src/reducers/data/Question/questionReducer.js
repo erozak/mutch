@@ -5,7 +5,7 @@ import {
 export default {
   [QUESTION_ANSWER]: (state, { payload }) => (
     state.setIn(
-      ['question', payload.index],
+      ['questions', payload.index, 'result'],
       payload.answer,
     )
   ),

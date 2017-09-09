@@ -8,16 +8,25 @@ const QuestionItem = ({
   artists,
   onPopup,
 }) => {
-  const resultIcon = result ? (
-    <i className="fa fa-circle-o"></i>
-  ) : (
-    <i className="fa fa-times"></i>
+  const resultIcon = ((result === undefined )
+    ? ''
+    : (result
+      ? <i className="fa fa-circle-o"></i>
+      : <i className="fa fa-times"></i>
+    )
+  );
+  const resultClass = ((result === undefined )
+    ? 'order'
+    : (result
+      ? 'order correct'
+      : 'order wrong'
+    )
   );
   const artistsString = artists.join(', ');
 
   return (
     <li className="item box-order">
-      <div className="order correct">{resultIcon}</div>
+      <div className={resultClass}>{resultIcon}</div>
       <div className="box">
         <div className="box-header">
           <h4 className="title">{title}</h4>
@@ -25,7 +34,7 @@ const QuestionItem = ({
         <div className="box-inner">{artistsString}</div>
       </div>
       <button className="box-btn" onClick={onPopup(index)}>
-        <i className="fa fa-external-link-square">Popup</i>
+        <i className="fa fa-external-link-square"></i>
       </button>
     </li>
   );
@@ -33,7 +42,6 @@ const QuestionItem = ({
 
 QuestionItem.propTypes = {
   index: PropTypes.number.isRequired,
-  result: PropTypes.bool.isRequired,
   title: PropTypes.string.isRequired,
   artists: PropTypes.object.isRequired,
   onPopup: PropTypes.func.isRequired,

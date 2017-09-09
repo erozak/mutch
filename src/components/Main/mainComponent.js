@@ -1,20 +1,21 @@
 import React from 'react';
-import {
-  BrowserRouter as Router,
-  Route,
-} from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import Aside from '../../containers/Aside';
 import Content from '../../containers/Content';
 import Init from '../../containers/Init';
 
-const Main = () => (
-  <Router>
-    <div className="main frame-item">
-      <Aside />
-      <Route exact path="/" component={Init} />
-    </div>
-  </Router>
+const Main = ({
+  pickedGenre,
+}) => (
+  <div className="main frame-item">
+    <Aside />
+    { pickedGenre.length > 0 ? <Content genre={pickedGenre} /> : (<Init />) }
+  </div>
 );
+
+Main.propTypes = {
+  pickedGenre: PropTypes.string.isRequired,
+};
 
 export default Main;
