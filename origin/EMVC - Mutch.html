@@ -1,25 +1,11 @@
 <!DOCTYPE html>
-<!-- saved from url=(0047)http://wisdom.nutc.edu.tw/~1410232042/GetSongs/ -->
 <html lang="zh-TW"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <title>EMVC - Mutch</title>
-    <link rel="stylesheet" href="./EMVC - Mutch_files/styles.css">
-  <style id="style-1-cropbar-clipper">/* Copyright 2014 Evernote Corporation. All rights reserved. */
-.en-markup-crop-options {
-    top: 18px !important;
-    left: 50% !important;
-    margin-left: -100px !important;
-    width: 200px !important;
-    border: 2px rgba(255,255,255,.38) solid !important;
-    border-radius: 4px !important;
-}
-
-.en-markup-crop-options div div:first-of-type {
-    margin-left: 0px !important;
-}
-</style></head>
-  <body style="" algoad="[&quot;fjeahcfaibacboijpccppebdpihhbflk&quot;]">
+    <link rel="stylesheet" href="./EMVC - Mutch/font-awesome.min.css">
+    <link rel="stylesheet" href="./EMVC - Mutch/styles.css">
+</head>
+  <body>
     <div id="load" class="loader-wrap" style="display: none;">
       <div class="loader">Loading...</div>
     </div>
@@ -66,7 +52,7 @@
         <button type="button" onclick="toTop(500)" class="btn btn-submit toTop fa fa-arrow-up"></button>
       </div>
     </div>
-    <script src="./EMVC - Mutch_files/jquery.min.js.download"></script>
+    <script src="./EMVC - Mutch/jquery-3.2.1.min.js"></script>
     <script>
       function getSongs() {
           $( '#load' ).fadeIn( 150 );
@@ -84,7 +70,6 @@
       }
       function ajaxGet(data) {
           if (data) {
-          	console.log(data);
               $('#result').empty().attr({ 'data-score': 0, 'data-done': 0 }).removeClass( 'success failed' );
               $('#result:not(.actived)').addClass('actived');
               data.forEach(function(el, i) {
@@ -94,7 +79,7 @@
                     .attr({
                       href: ( el.url ) ? el.url : 'javascript: void(0);',
                       target: '_blank',
-                      title: '#' + (i + 1) + ' ' + el.author + ' - ' + el.title[0],
+                      title: '#' + (i + 1) + ' ' + el.author + ' - ' + el.title,
                       'data-index': i + 1
                     })
                     .bind( 'click.score', scorePop );
@@ -102,15 +87,12 @@
                   el.author = el.author.split( /\s*(?:ft\.|feat\.|&|,|\+|\sX\s|\sx\s)\s*/g );
                   el.author.forEach( ( j ) => auth += '<div class="auth">' + j + '</div>' );
                   auth = '<div class="authors cb"><div class="fa fa-' + el.stream + '"></div>' + auth + '</div>';
-                  var title = '<div class="title">' + el.title[0] + '</div>';
-                  var trans = '';
-                  if ( el.title.length > 1 )
-                     for( let j = 1; j < el.title.length; j++ ) trans += '<div class="trans">' + el.title[ j ] + '</div>';
-                  var wrap = '<div class="wrap cb">' + auth + title + trans + '</div>';
+                  var title = '<div class="title">' + el.title + '</div>';
+                  var wrap = '<div class="wrap cb">' + auth + title + '</div>';
                   song.html( wrap );
                   $('#result').append( song );
               });
-          } else $('#resul').ihtml( data.toString() );
+          } else $('#result').innerhtml( data.toString() );
           $( '#load' ).fadeOut( 150 );
       }
       function scorePop( e ) {
@@ -171,7 +153,7 @@
           else if ( t >= 3 ) $( el ).attr( 'disabled', '' );
       }
       function toTop( d ) {
-          $('body').animate({scrollTop:0}, d );
+          $('body>.wrap').animate({scrollTop:0}, d );
       }
       (function() {
         $( document ).ready( init );
@@ -181,30 +163,4 @@
         }
       })( $ );
     </script>
-  
-<span id="sbmarwbthv5"></span><iframe frameborder="0" scrolling="no" style="background-color: transparent; border: 0px; display: none;" src="./EMVC - Mutch_files/saved_resource.html"></iframe><div id="GOOGLE_INPUT_CHEXT_FLAG" style="display: none;" input="" input_stat="{&quot;tlang&quot;:true,&quot;tsbc&quot;:true,&quot;pun&quot;:false,&quot;mk&quot;:true,&quot;ss&quot;:false}"></div></body><style type="text/css" id="stylebot-global-css">@font-face {
-  
-  font-family: Arial;
-  src: local( "Noto Sans CJK TC DemiLight" ),
-    local( "E:/1_Element/Font/Chinesese/wqy-microhei.ttc" );
-}@font-face {
-  
-  font-family: "Malgun Gothic";
-  src: local( "Noto Sans CJK TC DemiLight" ),
-    local( "E:/1_Element/Font/Chinesese/wqy-microhei.ttc" );
-}@font-face {
-  
-  font-family: "sans-serif";
-  src: local( "Noto Sans CJK TC DemiLight" ),
-    local( "E:/1_Element/Font/Chinesese/wqy-microhei.ttc" );
-}@font-face {
-  
-  font-family: PMingLiU;
-  src: local( "Noto Sans CJK TC DemiLight" ),
-    local( "E:/1_Element/Font/Chinesese/wqy-microhei.ttc" );
-}@font-face {
-  
-  font-family: 新細明體;
-  src: local( "Noto Sans CJK TC DemiLight" ),
-    local( "E:/1_Element/Font/Chinesese/wqy-microhei.ttc" );
-}</style></html>
+</html>

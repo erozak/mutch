@@ -1,4 +1,5 @@
 // const path = require('path');
+const webpack = require('webpack');
 const HtmlwebpackPlugin = require('html-webpack-plugin');
 const FaviconswebpackPlugin = require('favicons-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -18,8 +19,13 @@ const FaviconswebpackPluginConfig = new FaviconswebpackPlugin({
   inject: true,
 });
 
+const ProvidePluginConfig = new webpack.ProvidePlugin({
+  'React': 'react',
+  $: 'jquery',
+})
+
 module.exports = {
-  entry: ['babel-polyfill', './src/index.js'],
+  entry: ['babel-polyfill', 'jquery', './src/index.js'],
   output: {
     path: `${__dirname}/dist`,
     filename: 'bundle.js',
@@ -76,6 +82,7 @@ module.exports = {
     port: 3000,
   },
   plugins: [
+    ProvidePluginConfig,
     HtmlwebpackPluginConfig,
     FaviconswebpackPluginConfig,
     new ExtractTextPlugin('main.css'),

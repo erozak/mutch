@@ -1,16 +1,18 @@
 @import url(font-awesome.css);
 @import url(loader.css);
+@import url("https://fonts.googleapis.com/css?family=Bungee");
 html, body {
   margin: 0;
   padding: 0;
   width: 100%;
-  height: 100%; }
+  height: 100%;
+  overflow: hidden; }
 
 body {
   font-size: 16px; }
 
 body {
-  font-family: "Noto Sans", "WenQuanYi Micro Hei", "Noto Sans CJK TC", "Microsoft JhengHei", "Sans-serif", "Arial"; }
+  font-family: "Noto Sans", "WenQuanyi Micro Hei", "Noto Sans CJK TC", "Microsoft JhengHei", "Sans-serif", "Arial"; }
 
 *, *::before, *::after {
   -webkit-box-sizing: border-box;
@@ -33,10 +35,9 @@ body {
   position: relative;
   display: block;
   width: 100%;
-  height: 100%; }
+  height: 100%;
+  overflow-y: auto; }
 body > .wrap {
-  padding: 2vh 0;
-  height: auto;
   min-height: 100%; }
 
 .flex {
@@ -51,6 +52,13 @@ body > .wrap {
   align-items: stretch;
   justify-content: flex-start;
   align-content: flex-start; }
+
+.f-mc {
+  align-items: center;
+  justify-content: center; }
+
+.f-sb {
+  justify-content: space-between; }
 
 .f-i-g {
   flex-grow: 1; }
@@ -78,11 +86,39 @@ body > .wrap {
 
 .btn-submit {
   color: #FFF;
-  background-color: #0097e0; }
+  background-color: #333; }
 .btn-submit:hover {
-  background-color: #14b2ff; }
+  background-color: #4d4d4d; }
 .btn-submit:active {
-  background-color: #0086c7; }
+  background-color: #262626; }
+
+.btn-successed {
+  color: #FFF;
+  background-color: #30ad8a; }
+.btn-successed:hover {
+  background-color: #45cba6; }
+.btn-successed:active {
+  background-color: #2a997a; }
+
+.btn-failed {
+  color: #FFF;
+  background-color: #da3a32; }
+.btn-failed:hover {
+  background-color: #e2645d; }
+.btn-failed:active {
+  background-color: #cd2d25; }
+
+.btn-reload {
+  color: #FFF;
+  background-color: #333; }
+.btn-reload:not(:disabled):hover {
+  background-color: #4d4d4d; }
+.btn-reload:not(:disabled):active {
+  background-color: #262626; }
+.btn-reload:disabled {
+  color: #b3b3b3;
+  background-color: transparent;
+  cursor: not-allowed; }
 
 .inp {
   border: 1px solid transparent;
@@ -91,7 +127,7 @@ body > .wrap {
   font-size: 1em;
   line-height: 1.6;
   text-align: center;
-  user-select: all; }
+  background-color: transparent; }
 
 .lb {
   display: inline-block; }
@@ -112,18 +148,30 @@ body > .wrap {
 .lb:hover > .inp {
   border-color: #333; }
 
-.loader-wrap {
+.loader-wrap, .score {
   top: 0;
   left: 0;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: #FFF; }
+
+.loader-wrap {
   display: flex;
   align-items: center;
   justify-content: center;
   align-content: center;
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background-color: #FFF;
   z-index: 999; }
+
+.score {
+  z-index: 998; }
+.score > .box {
+  width: 80%;
+  transition: width 0.15s ease-in-out; }
+.score > .box .btn-reload > .fa {
+  margin-right: 1em; }
+.score > .box > .flex > .btn {
+  width: calc( 50% - .5em ); }
 
 .main {
   margin: 0 auto;
@@ -141,17 +189,62 @@ body > .wrap {
 .top > .lb:last-child, .top > .btn:last-child {
   margin-right: 0; }
 
+.toTop {
+  display: none;
+  margin-top: 1.5em;
+  margin-bottom: 4em;
+  padding: 1em 1.5em 0.975em; }
+
+h1.title {
+  margin: 0.5em auto 0.475em;
+  padding: 0.12em 0.12em 0.12em 0.42em;
+  font-size: 4.6em;
+  font-weight: bold;
+  font-family: "Bungee";
+  letter-spacing: 0.3em;
+  line-height: 1;
+  text-align: center;
+  text-shadow: 0.04em 0.04em 0 #FFF, -0.04em 0.04em 0 #FFF, 0.04em -0.04em 0 #FFF, 0.04em 0 0 #FFF, 0 0.04em 0 #FFF, -0.04em 0 0 #FFF, 0 -0.04em 0 #FFF, -0.04em -0.04em 0 #FFF, 0 -0.12em 0 #333, -0.12em 0 0 #333, 0 0.12em 0 #333, 0.12em 0 0 #333, 0.12em -0.12em 0 #333, -0.12em 0.12em 0 #333, 0.12em 0.12em 0 #333, -0.12em -0.12em 0 #333;
+  transition: font-size 0.15s ease-in-out; }
+
 .songs {
   counter-reset: song;
   padding: 1em; }
+.songs.actived::after {
+  content: "SCORE:  " attr(data-score) " / " attr(data-done);
+  display: block;
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  margin-top: 3em;
+  padding: 0.75em 1.5em 0.725em;
+  width: 100%;
+  color: #FFF;
+  background-color: #333;
+  z-index: 500; }
+.songs.success::after {
+  background-color: #30ad8a; }
+.songs.failed::after {
+  background-color: #da3a32; }
+.songs.actived + .toTop {
+  display: block; }
 
 .song {
   display: block;
   position: relative;
   margin: 3em 0 0 1.5em;
+  border: 0 none;
   text-decoration: none;
+  background-color: transparent;
+  text-align: left;
   counter-increment: song; }
-.song::before {
+.song.times-circle {
+  cursor: not-allowed; }
+.song.done {
+  cursor: default; }
+.song.single {
+  margin: 1em auto; }
+.song:not(.single)::before {
   content: "#" counter(song);
   display: inline-block;
   top: -1.25em;
@@ -163,16 +256,22 @@ body > .wrap {
   background-color: #333;
   transition: all 0.15s ease-in-out;
   z-index: 50; }
-.song:hover::before {
+.song.success::before {
+  background-color: #30ad8a; }
+.song.failed::before {
+  background-color: #da3a32; }
+.song:not(.single):hover::before {
   box-shadow: 0 0 0.05em rgba(0, 0, 0, 0.32); }
-.song:hover > .wrap {
+.song:not(.single):hover > .wrap {
   border-color: #333; }
 .song > .wrap {
-  border: 2px solid rgba(0,0,0,.12);
+  border: 2px solid rgba(0, 0, 0, 0.12);
   padding: 1em 1.5em;
   background-color: #FFF;
   transition: all 0.15s ease-in-out;
   z-index: 45; }
+.song.single > .wrap {
+  border-color: #333; }
 .song .authors {
   line-height: 1.6;
   margin-bottom: 0.25em; }
@@ -191,7 +290,7 @@ body > .wrap {
   font-size: 1.5em;
   font-weight: bold;
   line-height: 1;
-  font-family: 'Noto Sans', 'Noto Sans CJK TC', 'Microsoft JhengHei', 'Sans-serif', 'Arial';
+  font-family: "Noto Sans", "Noto Sans CJK TC", "Microsoft JhengHei", "Sans-serif", "Arial";
   word-break: break-all; }
 .song .trans {
   float: left;
@@ -208,16 +307,29 @@ body > .wrap {
     margin-bottom: 1.5em; }
   .top > .lb:last-child, .top > .btn:last-child {
     margin-bottom: 0; } }
+@media screen and (max-width: 525px) {
+  h1.title {
+    font-size: 3.6em; } }
 @media screen and (max-width: 438px) {
   .main {
     width: 100%;
     min-width: 0; }
 
+  .score > .box {
+    width: 90%; }
+
+  .toTop {
+    margin-right: 0.5em;
+    margin-left: 0.5em; }
+
   .song {
     margin: 0;
     margin-top: 1.5em; }
-  .song::before {
+  .song:not(.single)::before {
     top: 0.75em;
     left: 0.75em; }
-  .song > .wrap {
+  .song:not(.single) > .wrap {
     padding-top: 3.3em; } }
+@media screen and (max-width: 328px) {
+  h1.title {
+    font-size: 3.2em; } }

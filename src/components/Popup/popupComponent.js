@@ -29,7 +29,7 @@ const Popup = ({
       <div className="box-inner">
         <ul className="list-inline">
           <Artist artist={artist} />
-          {alias.size ? <Alias alias={alias} /> : ''}
+          {alias.filter(val => val.length > 0).size > 0 && (<Alias alias={alias} />)}
           <Url url={url} />
         </ul>
       </div>

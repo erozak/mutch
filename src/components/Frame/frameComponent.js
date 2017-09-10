@@ -10,7 +10,7 @@ const Frame = ({
 }) => (
   <div className="frame">
     {
-      popup ? (<Popup />) : ''
+      popup && (<Popup />)
     }
     <Main />
     <Foot />

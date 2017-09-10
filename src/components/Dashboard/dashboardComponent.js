@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { authPath } from '../../models/path';
+
 const Init = ({
   onMutchExcelChange,
   onMutchInit,
@@ -12,9 +14,13 @@ const Init = ({
         className="inp-block"
         onChange={onMutchExcelChange}
         placeholder="Excel ID"
+        value="1Izf1MmDHMLcULwUztQ8EuTTOTvTgl3Y1LcamjRh7mLY"
       />
     </div>
-    <button className="btn" type="button" onClick={onMutchInit}>Get Datas</button>
+    <div className="flex-sb">
+      <a href={authPath} className="btn" rel="noreferrer">Auth</a>
+      <button className="btn" type="button" onClick={onMutchInit}>Get Datas</button>
+    </div>
   </div>
 );
 

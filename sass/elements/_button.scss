@@ -33,7 +33,9 @@
   display: flex;
 
   .btn {
+    border-top: $button-border-width solid $button-border-color;
     border-right: 0 none;
+    border-bottom: $button-border-width solid $button-border-color;
     border-left: 0 none;
     border-radius: 0;
 

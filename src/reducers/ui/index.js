@@ -1,6 +1,7 @@
 import { handleActions } from 'redux-actions';
 
 import popup from './Popup';
+import spinner from './Spinner';
 
 import {
   uiState,
@@ -8,4 +9,5 @@ import {
 
 export default handleActions({
   ...popup,
+  ...spinner,
 }, uiState);

@@ -4,9 +4,17 @@ import Shortid from 'shortid';
 
 const Tags = ({
   genres,
+  mutchLoading,
   onGenrePickedDispatch,
 }) => (
   <div className="navbar">
+    {
+      mutchLoading && (
+        <div className="loading-wrap">
+          <div className="loading-square-single"></div>
+        </div>
+      )
+    }
     <div className="nav-ver">{
       genres.map(val => (
         <button
@@ -24,6 +32,7 @@ const Tags = ({
 
 Tags.propTypes = {
   genres: PropTypes.object.isRequired,
+  mutchLoading: PropTypes.bool.isRequired,
   onGenrePickedDispatch: PropTypes.func.isRequired,
 };
 

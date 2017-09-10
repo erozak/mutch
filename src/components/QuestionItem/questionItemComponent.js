@@ -8,9 +8,8 @@ const QuestionItem = ({
   artists,
   onPopup,
 }) => {
-  const resultIcon = ((result === undefined )
-    ? ''
-    : (result
+  const resultIcon = ((result !== undefined) &&
+    (result
       ? <i className="fa fa-circle-o"></i>
       : <i className="fa fa-times"></i>
     )

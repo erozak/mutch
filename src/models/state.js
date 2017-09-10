@@ -2,12 +2,8 @@ import Immutable from 'immutable';
 
 export const dataState = Immutable.fromJS({
   amount: 10,
-  excel: '',
+  excel: '1Izf1MmDHMLcULwUztQ8EuTTOTvTgl3Y1LcamjRh7mLY',
   genres: [],
-  score: {
-    correct: 0,
-    wrong: 0,
-  },
   pickedGenre: '',
   gaming: false,
   questions: [
@@ -29,5 +25,9 @@ export const uiState = Immutable.fromJS({
   popup: {
     show: false,
     question: -1,
+  },
+  spinner: {
+    mutch: false,
+    genre: false,
   },
 });
