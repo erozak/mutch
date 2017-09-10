@@ -270,6 +270,10 @@ input[type="url"],
 input[type="week"] {
   background-color: $input-blur-bg-color;
 
+  &:hover {
+    background-color: $input-hover-bg-color;
+  }
+
   &:focus {
     background-color: $input-focus-bg-color;
   }

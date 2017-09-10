@@ -1,35 +1,20 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-const Aside = ({
-  correct,
-  wrong,
-  onRestart,
-}) => (
+import Dashboard from '../../containers/Dashboard';
+import Tags from '../../containers/Tags';
+
+const Aside = () => (
   <div className="aside frame-item">
-    <h3 className="title">Scoring</h3>
-    <div className="score flex-fluid">
-      <div className="group">
-        <div className="topic">
-          <i className="fa fa-circle-o"></i>
-        </div>
-        <div className="inner">{correct}</div>
-      </div>
-      <div className="group">
-        <div className="topic">
-          <i className="fa fa-times"></i>
-        </div>
-        <div className="inner">{wrong}</div>
-      </div>
-    </div>
-    <button className="aside-btn" type="button" onClick={onRestart}>Restart</button>
+    <header className="head">
+      <h1 className="title">
+        <span>MUTCH</span>
+        <span className="subtitle">GuessSongs</span>
+      </h1>
+    </header>
+    <Dashboard />
+    <Tags />
   </div>
 );
 
-Aside.propTypes = {
-  correct: PropTypes.number.isRequired,
-  wrong: PropTypes.number.isRequired,
-  onRestart: PropTypes.func.isRequired,
-};
 
 export default Aside;

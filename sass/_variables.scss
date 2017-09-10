@@ -12,6 +12,7 @@ $black-real:   #000;
 
 $gray: #9a9a9a;
 
+$gray-alpha-lighter: rgba($black, .02);
 $gray-alpha-light: rgba($black, .04);
 $gray-alpha: rgba($black, .18);
 $gray-alpha-dark: rgba($black, .36);
@@ -40,8 +41,9 @@ $link-actived-color: $black;
 $button-border-color: $gray-alpha;
 $button-hover-bg: $gray-alpha-light;
 
-$input-blur-bg-color: $gray-alpha-light;
-$input-focus-bg-color: $white;
+$input-blur-bg-color: $white;
+$input-focus-bg-color: $gray-alpha-light;
+$input-hover-bg-color: $gray-alpha-lighter;
 $input-border-color: $gray-alpha;
 $input-outline-color: $gray-alpha-darker;
 

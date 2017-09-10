@@ -9,6 +9,7 @@ export const dataState = Immutable.fromJS({
     wrong: 0,
   },
   pickedGenre: '',
+  gaming: false,
   questions: [
     /*
     *  {

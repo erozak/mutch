@@ -1,4 +1,4 @@
-.navbar{
+.navbar {
   display: -webkit-flex;
   display: -ms-flex;
   display: flex;
@@ -25,28 +25,28 @@
   display: -ms-flex;
   display: flex;
   align-items: center;
+  padding: 1em;
 
   .navbar & {
     font-size: 1.25em;
+  }
 
-    .link {
-      margin: $nav-gut;
-      padding: $nav-padding;
+  .link {
+    margin: $nav-gut;
+    padding: $nav-padding;
+    cursor: pointer;
+  }
 
-      span {
-        padding-bottom: .25em;
-      }
+}
 
-      &:hover:not(.actived) {
-        text-shadow: $nav-link-hover-shadow;
-      }
+.nav-ver {
+  @extend .nav;
+  flex-direction: column;
 
-      &.actived span {
-        font-weight: bold;
-        box-shadow: $nav-link-actived-shadow;
-      }
-
-    }
+  .link {
+    display: block;
+    margin: .5em auto;
+    width: 90%;
   }
 
 }

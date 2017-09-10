@@ -3,114 +3,184 @@
 }
 
 .frame {
+  position: relative;
   display: -webkit-flex;
   display: -ms-flex;
   display: flex;
-  flex-direction: column;
   align-items: stretch;
   align-content: stretch;
-  position: relative;
+  flex-direction: column;
   height: 100%;
   width: 100%;
 
-  .frame-item {
-    position: relative;
-  }
-
-  .head,
+  .main,
   .aside,
+  .dashboard,
   .content,
+  .content > .top,
   .foot {
+    position: relative;
     border: 0 solid $frame-border-color;
   }
 
-  .head,
   .aside {
-    display: -webkit-flex;
-    display: -ms-flex;
-    display: flex;
-  }
-
-  .head {
     order: 1;
-    border-bottom-width: 1px;
-
-    & > .title {
-      border-bottom-width: 0;
-      padding: $head-title-padding;
-      letter-spacing: .0625em;
-      line-height: 1;
-      font-weight: 900;
-
-      & .subtitle {
-        display: block;
-        margin-top: -3px;
-        font-size: .5em;
-        letter-spacing: 0.08em;
-        text-align: center;
-        font-weight: normal;
-      }
-
-    }
-
-  }
-
-  .main {
-    order: 2;
-    flex: 1;
     display: -webkit-flex;
     display: -ms-flex;
     display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    border-right-width: 1px;
 
-    .aside {
-      flex-direction: column;
-      border-right-width: 1px;
-      padding: $aside-padding;
-      order: 1;
+    .head {
+      border-bottom-width: 1px;
 
-      .title {
-        margin-top: 0;
-        margin-right: 0;
-        margin-left: 0;
-      }
+      & > .title {
+        border-bottom-width: 0;
+        padding: $head-title-padding;
+        letter-spacing: .0625em;
+        line-height: 1;
+        font-weight: 900;
+        text-align: center;
 
-      .score {
-
-        .tag {
-          width: 100%;
-
-          .inner {
-            text-align: center;
-          }
-
+        & .subtitle {
+          display: block;
+          margin-top: -3px;
+          font-size: .5em;
+          letter-spacing: 0.08em;
+          font-weight: normal;
         }
 
       }
 
     }
 
-    .content {
-      order: 2;
-      display: -webkit-flex;
-      display: -ms-flex;
-      display: flex;
-      flex: 1 1 80%;
-      padding: 1em .5em;
-      background-color: $content-bg;
-      overflow: auto;
+    .dashboard {
+      border-width: 1px 0;
+      padding: 1em;
+    }
+
+    .navbar {
+      overflow-x: hidden;
+      overflow-y: auto;
+
+      .nav-ver {
+        width: 100%;
+      }
+
     }
 
   }
 
+  .content {
+    order: 2;
+    flex: 1 1 90%;
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+
+    &.empty {
+      background-color: $content-bg;
+
+      & > .empty-text {
+        align-self: center;
+        margin: 1em auto;
+        width: 80%;
+        font-size: 1.25em;
+        color: $gray;
+        text-align: center;
+      }
+
+    }
+
+    & > .top {
+      border-bottom-width: 1px;
+
+      .title {
+        margin: 0;
+      }
+
+      .flex-sb > .btn {
+        border-radius: 0;
+        border-width: 0 0 0 1px;
+      }
+    }
+
+    & > .inner {
+      flex: 1 1 auto;
+      background-color: $content-bg;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+
+  }
+
+  .main {
+    order: 1;
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    flex: 1 1 80%;
+  }
+
   .foot {
-    order: 3;
+    order: 2;
     border-top-width: 1px;
     padding: $frame-padding;
     text-align: center;
+    flex: 0 1 auto;
 
     a {
       color: inherit;
     }
+  }
+
+}
+
+.popup {
+  top: 0;
+  left: 0;
+  position: absolute;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  width: 100%;
+  height: 100%;
+  background: rgba($black-real, .45);
+  z-index: 9990;
+
+  .box {
+    min-width: 560px;
+    box-shadow: $popup-shdaow;
+
+    .box-header {
+
+      .popup-close {
+        margin-left: 1em;
+        border-width: 0;
+        border-left: $box-border;
+        padding: $popup-close-padding;
+      }
+
+    }
+
+    .box-inner {
+      display: -webkit-flex;
+      display: -ms-flex;
+      display: flex;
+      align-items: center;
+      padding: $popup-inner-padding;
+
+      & > * {
+        flex: 1 1 auto;
+      }
+
+    }
+
   }
 
 }

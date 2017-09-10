@@ -1,6 +1,5 @@
 export const GENRE_CHANGE = 'GENRE_CHANGE';
 export const GENRE_INIT = 'GENRE_INIT';
-export const GENRE_RESTART = 'GENRE_RESTART';
 
 export const MUTCH_EXCEL_CHANGE = 'MUTCH_EXCEL_CHANGE';
 export const MUTCH_RESTART = 'MUTCH_RESTART';

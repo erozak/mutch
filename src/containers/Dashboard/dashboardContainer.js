@@ -4,7 +4,7 @@ import {
   onMutchExcelChange,
   onMutchInit as onMutchInitAction,
 } from '../../actions';
-import Init from '../../components/Init';
+import Dashboard from '../../components/Dashboard';
 
 const mapStateToProps = state => ({
   excel: state.getIn(['data', 'excel']),
@@ -32,4 +32,4 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps,
   mergeProps,
-)(Init);
+)(Dashboard);

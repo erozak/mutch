@@ -1,7 +1,6 @@
 import {
   GENRE_INIT,
   GENRE_CHANGE,
-  GENRE_RESTART,
 } from '../../../models/actionTypes';
 
 export default {
@@ -12,15 +11,10 @@ export default {
         payload.genre,
       )
       .set('questions', payload.questions)
+      .set('gaming', true)
   ),
 
   [GENRE_INIT]: (state, { payload }) => (
     state.set('genres', payload.genres)
-  ),
-
-  [GENRE_RESTART]: state => (
-    state
-      .setIn(['score', 'correct'], 0)
-      .setIn(['score', 'wrong'], 0)
   ),
 };

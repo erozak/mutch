@@ -1,21 +1,23 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-import Aside from '../../containers/Aside';
+import Aside from '../Aside';
 import Content from '../../containers/Content';
-import Init from '../../containers/Init';
 
 const Main = ({
   pickedGenre,
 }) => (
   <div className="main frame-item">
     <Aside />
-    { pickedGenre.length > 0 ? <Content genre={pickedGenre} /> : (<Init />) }
+    {
+      pickedGenre ? (
+        <Content genre={pickedGenre} />
+      ) : (
+        <div className="empty content flex-c">
+          <div className="empty-text">Enter a excel and pick a genre to start the game.</div>
+        </div>
+      )
+    }
   </div>
 );
-
-Main.propTypes = {
-  pickedGenre: PropTypes.string.isRequired,
-};
 
 export default Main;
