@@ -18,7 +18,7 @@ const Init = ({
       />
     </div>
     <div className="flex-sb">
-      <a href={authPath} className="btn" rel="noreferrer">Auth</a>
+      <a href={authPath} className="btn" rel="noreferrer" target="_blank">Auth</a>
       <button className="btn" type="button" onClick={onMutchInit}>Get Datas</button>
     </div>
   </div>
