@@ -27,7 +27,7 @@ const ProvidePluginConfig = new webpack.ProvidePlugin({
 module.exports = {
   entry: ['babel-polyfill', 'jquery', './src/index.js'],
   output: {
-    path: `${__dirname}/dist`,
+    path: `${__dirname}`,
     filename: 'bundle.js',
   },
   module: {
