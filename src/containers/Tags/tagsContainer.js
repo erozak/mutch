@@ -2,10 +2,12 @@ import { connect } from 'react-redux';
 
 import {
   onGenrePicked,
+  onNavToggle,
 } from '../../actions';
 import Tags from '../../components/Tags';
 
 const mapStateToProps = state => ({
+  navShow: state.getIn(['ui', 'nav']),
   gaming: state.getIn(['data', 'gaming']),
   genres: state.getIn(['data', 'genres']),
   excel: state.getIn(['data', 'excel']),
@@ -23,6 +25,7 @@ const mapDispatchToProps = dispatch => ({
 
     return ifDispatch ? dispatch(onGenrePicked(excel, genre)) : null;
   },
+  onNavToggle: () => dispatch(onNavToggle()),
 });
 
 const mergeProps = (stateProps, dispatchProps, ownProps) => {

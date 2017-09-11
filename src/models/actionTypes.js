@@ -8,6 +8,8 @@ export const MUTCH_RESET = 'MUTCH_RESET';
 export const POPUP_OPEN = 'POPUP_OPEN';
 export const POPUP_CLOSE = 'POPUP_CLOSE';
 
+export const NAV_TOGGLE = 'NAV_TOGGLE';
+
 export const SPINNER_MUTCH_HIDE = 'SPINNER_MUTCH_HIDE';
 export const SPINNER_MUTCH_SHOW = 'SPINNER_MUTCH_SHOW';
 export const SPINNER_GENRE_HIDE = 'SPINNER_GENRE_HIDE';

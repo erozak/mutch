@@ -19,7 +19,6 @@
   .content,
   .content > .top,
   .foot {
-    position: relative;
     border: 0 solid $frame-border-color;
   }
 
@@ -34,8 +33,20 @@
     z-index: 10;
     background-color: $white;
 
+    @include phone {
+      flex: 0 0 auto;
+      flex-direction: row;
+      flex-wrap: wrap;
+      border-right-width: 0;
+    }
+
     .head {
       border-bottom-width: 1px;
+
+      @include phone {
+        order: 1;
+        flex: 0 0 auto;
+      }
 
       & > .title {
         border-bottom-width: 0;
@@ -45,12 +56,23 @@
         font-weight: 900;
         text-align: center;
 
+        @include phone {
+          display: inline-block;
+          margin: .25em;
+          padding: $head-title-padding-mini;
+          font-size: 1.5em;
+        }
+
         & .subtitle {
           display: block;
           margin-top: -3px;
           font-size: .5em;
           letter-spacing: 0.08em;
           font-weight: normal;
+
+          @include phone {
+            font-size: .55em;
+          }
         }
 
       }
@@ -60,6 +82,39 @@
     .dashboard {
       border-width: 1px 0;
       padding: 1em;
+
+      @include phone {
+        display: -webkit-flex;
+        display: -ms-flex;
+        display: flex;
+        order: 3;
+        padding: .25em;
+        width: 100%;
+      }
+
+      .form-group {
+        @include phone {
+          flex: 1 1 auto;
+          margin: 0;
+        }
+
+        .inp,
+        .inp-block {
+          font-size: .75em;
+        }
+      }
+
+      .flex {
+        @include phone {
+          margin: 0;
+        }
+
+        .btn {
+          @include phone {
+            font-size: .75em;
+          }
+        }
+      }
     }
 
     .navbar {
@@ -68,8 +123,42 @@
       overflow-x: hidden;
       overflow-y: auto;
 
+      @include phone {
+        right: .5em;
+        order: 2;
+        justify-content: center;
+        align-items: flex-end;
+        flex: 1 0 5em;
+        padding: .75em .5em;
+      }
+
+      .btn-collapse {
+        display: none;
+
+        @include phone {
+          display: inline-block;
+        }
+      }
+
+      .loading-wrap {
+        @include phone {
+          margin: 0;
+          padding: .25em .5em;
+        }
+      }
+
       .nav-ver {
         width: 100%;
+
+        @include phone {
+          display: none;
+          top: 3em;
+          left: 0;
+          position: absolute;
+          height: calc(100% - 3em);
+          background-color: $white;
+          overflow-y: auto;
+        }
       }
 
     }
@@ -104,6 +193,9 @@
 
       .title {
         margin: 0;
+        @include phone {
+          font-size: 1.25em;
+        }
       }
 
       .flex-sb > .btn {
@@ -131,6 +223,10 @@
     display: -ms-flex;
     display: flex;
     flex: 1 1 80%;
+
+    @include phone {
+      flex-direction: column;
+    }
   }
 
   .foot {
@@ -161,12 +257,23 @@
   height: 100%;
   background: rgba($black-real, .45);
   z-index: 9990;
+  overflow-y: auto;
 
   .box {
-    min-width: 560px;
+    max-width: 100%;
     box-shadow: $popup-shdaow;
 
+    @include phone {
+      margin: .5em 0;
+    }
+
     .box-header {
+
+      .title {
+        @include phone {
+          font-size: 1em;
+        }
+      }
 
       .popup-close {
         margin-left: 1em;

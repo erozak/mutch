@@ -4,7 +4,7 @@
     "camelcase": 0,
     "import/no-extraneous-dependencies": [0],
     "import/prefer-default-export": 0,
-    "linebreak-style": ["error", "unix"],
+    "linebreak-style": ["error", "windows"],
     "max-len": 0,
     "new-cap": [0],
     "no-console": 0,

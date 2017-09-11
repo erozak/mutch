@@ -30,4 +30,5 @@ export const uiState = Immutable.fromJS({
     mutch: false,
     genre: false,
   },
+  nav: false,
 });

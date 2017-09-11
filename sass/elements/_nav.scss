@@ -27,6 +27,12 @@
   align-items: center;
   padding: 1em;
 
+  &.collapsed {
+    display: -webkit-flex !important;
+    display: -ms-flex !important;
+    display: flex !important;
+  }
+
   .navbar & {
     font-size: 1.25em;
   }
@@ -45,6 +51,7 @@
 
   .link {
     display: block;
+    flex: 0 0 auto;
     margin: .5em auto;
     width: 90%;
   }

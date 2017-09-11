@@ -32,9 +32,13 @@
       border: $box-border;
       border-width: $box-border-width 0 $box-border-width $box-border-width;
       padding: $box-order-padding;
-      min-width: 5em;
+      width: 5em;
       background-clip: padding-box;
       transition: all $transition-speed $transition-curze;
+
+      @include phone {
+        width: 3em;
+      }
 
       &::before {
         counter-increment: boxOrder;
@@ -73,12 +77,23 @@
         position: absolute;
         font-size: 5em;
         z-index: 0;
+        @include phone {
+          font-size: 3em;
+        }
       }
 
     }
 
     .box {
       flex: 1 1 auto;
+
+      .box-header {
+        .title {
+          @include phone {
+            font-size: 1em;
+          }
+        }
+      }
 
       .box-inner {
         padding: $box-inner-padding;

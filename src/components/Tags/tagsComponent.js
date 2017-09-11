@@ -3,9 +3,11 @@ import PropTypes from 'prop-types';
 import Shortid from 'shortid';
 
 const Tags = ({
+  navShow,
   genres,
   mutchLoading,
   onGenrePickedDispatch,
+  onNavToggle,
 }) => (
   <div className="navbar">
     {
@@ -15,7 +17,14 @@ const Tags = ({
         </div>
       )
     }
-    <div className="nav-ver">{
+    {
+      !mutchLoading && genres.size > 0 && (
+        <button className="btn btn-collapse" onClick={onNavToggle}>
+          <i className="fa fa-bars"></i>
+        </button>
+      )
+    }
+    <div className={navShow ? 'nav-ver collapsed' : 'nav-ver'}>{
       genres.map(val => (
         <button
           key={Shortid.generate()}
@@ -31,9 +40,11 @@ const Tags = ({
 );
 
 Tags.propTypes = {
+  navShow: PropTypes.bool.isRequired,
   genres: PropTypes.object.isRequired,
   mutchLoading: PropTypes.bool.isRequired,
   onGenrePickedDispatch: PropTypes.func.isRequired,
+  onNavToggle: PropTypes.func.isRequired,
 };
 
 export default Tags;
